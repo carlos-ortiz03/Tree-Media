@@ -41,11 +41,10 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<div>
-    <a src="https://www.loom.com/share/c00b3f523f824fd887fb8a2fbf224707?sid=2400352a-b29f-4f06-97de-92a6669210ce">
-        <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/4ad69ab3d5c443e69bad5929074cccc0-with-play.gif">
-    </a>
-</div>
+<a href="https://www.loom.com/share/c00b3f523f824fd887fb8a2fbf224707">
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/c00b3f523f824fd887fb8a2fbf224707-with-play.gif">
+</a>
+
 <!-- Replace this with whatever GIF tool you used! -->
 
 GIF created with Loom
