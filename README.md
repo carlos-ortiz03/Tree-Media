@@ -42,7 +42,7 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <div>
-    <a src="https://www.loom.com/share/c00b3f523f824fd887fb8a2fbf224707?sid=c0229fb6-279b-49f4-9138-a40095e4e79a">
+    <a src="https://www.loom.com/share/c00b3f523f824fd887fb8a2fbf224707?sid=5890c93a-ebef-4f20-ac49-c5b9488a113f">
         <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/4ad69ab3d5c443e69bad5929074cccc0-with-play.gif">
     </a>
 </div>
