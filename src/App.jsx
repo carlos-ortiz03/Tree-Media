@@ -13,7 +13,7 @@ function App() {
         <div className='green-filter'></div>
         <div className="container">
           <div className='navigation'>
-          <Link className="nav-button" to="/"><MdHome /></Link>
+            <Link className="nav-button" to="/"><MdHome /></Link>
             <h1 className='title'>Tree Media</h1>
             <Link className="nav-button" to="/add"><MdOutlineAdd /></Link>
           </div>

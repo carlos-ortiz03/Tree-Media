@@ -55,6 +55,7 @@ const Home = () => {
                     imageURL: url
                 })
             })
+
         });
     }
 
@@ -73,7 +74,8 @@ const Home = () => {
     return (
                 <Routes>
                     <Route path="/add" element={
-                        <AddPosts onSubmitPost={onSubmitPost} />
+                            <AddPosts onSubmitPost={onSubmitPost} />
+                        
                     }/>
                     <Route path="/" element={
                         <>

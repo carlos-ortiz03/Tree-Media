@@ -125,6 +125,7 @@ html, body {
   background-color: rgb(71, 96, 65); */
   border-radius: 20px 20px 0px 0px;
   background-color: #b8c5b8;
+  overflow: auto;
 }
 
 .post-container {
