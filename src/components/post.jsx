@@ -1,11 +1,21 @@
-const Post = ({ title, tree, imageURL, likes, timePosted, id, deleteButton }) => {
-  console.log(imageURL)
+import { useState } from "react";
+
+const Post = ({ updateLikes, title, tree, imageURL, likes, timePosted, id, deleteButton }) => {
+  const [postLikes, setPostLikes] = useState(likes);
+
+  const handleLikeButton = () => {
+    setPostLikes(postLikes + 1);
+    console.log("HI");
+    updateLikes(id, postLikes + 1);
+  }
+
   return (
     <div className="post-container">
       <h2>{title}</h2>
       <p>{tree}</p>
       <img className="image-post-container" src={imageURL} alt="Post" />
-      <p>Likes: {likes}</p>
+      <p >Likes: {postLikes}</p>
+      <button onClick={handleLikeButton}>Like Button</button>
       <button onClick={() => deleteButton(id, imageURL)}>Delete Post</button>
     </div>
   );

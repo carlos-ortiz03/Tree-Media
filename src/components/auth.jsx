@@ -9,7 +9,7 @@ export const Auth = () => {
 
     const signIn = async () => {
         try {
-            await createUserWithEmailAndPassword(auth, email, password)
+            await createUserWithEmailAndPassword(auth, email, password);
         } catch (err) {
             console.log(err);
         }

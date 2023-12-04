@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { db, storage } from "../firebase-config"
-import { doc, deleteDoc, getDocs, collection, addDoc, serverTimestamp, Timestamp } from "firebase/firestore";
+import { doc, deleteDoc, getDocs, collection, addDoc, serverTimestamp, Timestamp, updateDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, deleteObject } from "firebase/storage"
 import AddPosts from "./addPosts"
 import Posts from "./posts"
@@ -15,19 +15,19 @@ const Home = () => {
     const postsCollectionsRef = collection(db, "Posts")
 
 
-    useEffect(() => {
-        const getPostsList = async () => {
-          try {
-            const data = await getDocs(postsCollectionsRef);
-            const filteredData = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
-            setLoading(false);
-            setPosts(filteredData);
-          } catch (err) {
-            console.log(err);
-            setLoading(false);
-          }
+    const getPostsList = async () => {
+        try {
+          const data = await getDocs(postsCollectionsRef);
+          const filteredData = data.docs.map((doc) => ({...doc.data(), id: doc.id}))
+          setLoading(false);
+          setPosts(filteredData);
+        } catch (err) {
+          console.log(err);
+          setLoading(false);
         }
+      }
 
+    useEffect(() => {
         getPostsList();
     }, []);
 
@@ -55,18 +55,30 @@ const Home = () => {
                     imageURL: url
                 })
             })
-
+            .then(() => getPostsList());
+            
         });
     }
+
+    const updateLikes = async (postId, newLikes) => {
+        const postDocRef = doc(db, 'Posts', postId);
+
+        try {
+            await updateDoc(postDocRef, {
+                likes: newLikes
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     const deleteButton = async (id, imageURL) => {
         try {
             await deleteDoc(doc(db, "Posts", id))
             const storageRef = ref(storage, imageURL)
             await deleteObject(storageRef)
-            setPosts(posts.filter((currPost) => {
-                return id !== currPost.id;
-            }))
+            setPosts((prevPosts) => prevPosts.filter((currPost) => id !== currPost.id));
+
         } catch (err) {
             console.log (err);
         }
@@ -79,7 +91,7 @@ const Home = () => {
                     }/>
                     <Route path="/" element={
                         <>
-                            {!loading ? <Posts postsList={posts} deleteButton={deleteButton}/> : 
+                            {!loading ? <Posts updateLikes={updateLikes} postsList={posts} deleteButton={deleteButton}/> : 
                             <div className="loading-container">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
                                     <rect x="90" y="140" width="20" height="40" fill="#623321"></rect>

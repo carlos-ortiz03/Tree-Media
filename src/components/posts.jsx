@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Post from "./post";
 
-const Posts = ({postsList, deleteButton}) => {
+const Posts = ({updateLikes, postsList, deleteButton}) => {
 
     console.log(postsList)
 
@@ -12,7 +12,7 @@ const Posts = ({postsList, deleteButton}) => {
             <p>No New Posts</p>
           ) : (
             postsList.map((post) => (
-              <Post deleteButton={deleteButton} key={post.id} id={post.id} {...post} />
+              <Post updateLikes={updateLikes} deleteButton={deleteButton} key={post.id} id={post.id} {...post} />
             ))
           )
         }
