@@ -14,7 +14,8 @@ const Post = ({ updateLikes, title, tree, imageURL, likes, timePosted, id, delet
       <h2>{title}</h2>
       <p>{tree}</p>
       <img className="image-post-container" src={imageURL} alt="Post" />
-      <p >Likes: {postLikes}</p>
+      <p>Likes: {postLikes}</p>
+      <p>Type of Tree: {tree}</p>
       <button onClick={handleLikeButton}>Like Button</button>
       <button onClick={() => deleteButton(id, imageURL)}>Delete Post</button>
     </div>
